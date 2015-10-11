@@ -7,7 +7,9 @@
     "rollup": "mkdirp dist && rollup lib/index.js > dist/bundle-rollup.js",
     "build-node": "mkdirp lib_node && babel lib --out-dir lib_node",
     "browserify": "mkdirp dist && npm run build-node && browserify lib_node > dist/bundle-browserify.js",
-    "webpack": "mkdirp dist && npm run build-node && webpack lib_node dist/bundle-webpack.js"
+    "browserify-es5-only": "mkdirp dist && browserify lib_es5 > dist/bundle-browserify-es5-only.js",
+    "webpack": "mkdirp dist && npm run build-node && webpack lib_node dist/bundle-webpack.js",
+    "webpack-es5-only": "mkdirp dist && webpack lib_es5 dist/bundle-webpack-es5-only.js"
   },
   "keywords": [],
   "author": "",
