@@ -23,3 +23,13 @@ result (bytes):
 5275	dist/bundle-webpack-es5-only.js
 1652    dist/bundle-rollup.js
 ```
+
+**Update!** After uglify + gzip, i.e. `uglify -mc | gzip -c | wc -c`:
+
+```
+845	dist/bundle-browserify.js
+681	dist/bundle-browserify-es5-only.js
+548	dist/bundle-webpack.js
+382	dist/bundle-webpack-es5-only.js
+250	dist/bundle-rollup.js
+```
