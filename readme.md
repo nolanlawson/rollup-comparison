@@ -24,7 +24,7 @@ result (bytes):
 1652    dist/bundle-rollup.js
 ```
 
-**Update!** After uglify + gzip, i.e. `uglify -mc | gzip -c | wc -c`:
+**Update!** After uglify + gzip, i.e. `uglifyjs -mc | gzip -c | wc -c`:
 
 ```
 845	dist/bundle-browserify.js
