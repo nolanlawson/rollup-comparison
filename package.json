@@ -4,14 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "rollup": "mkdirp dist && rollup lib/index.js > dist/bundle-rollup.js",
+    "rollup": "mkdirp dist && rollup lib/index.js | uglifyjs -c > dist/bundle-rollup.js",
     "build-node": "mkdirp lib_node && babel lib --out-dir lib_node",
-    "browserify": "mkdirp dist && npm run build-node && browserify lib_node > dist/bundle-browserify.js",
-    "browserify-es5-only": "mkdirp dist && browserify lib_es5 > dist/bundle-browserify-es5-only.js",
-    "webpack": "mkdirp dist && npm run build-node && webpack lib_node dist/bundle-webpack.js",
-    "webpack-es5-only": "mkdirp dist && webpack lib_es5 dist/bundle-webpack-es5-only.js"
+    "browserify": "mkdirp dist && npm run build-node && browserify lib_node | uglifyjs -c > dist/bundle-browserify.js",
+    "browserify-es5-only": "mkdirp dist && browserify lib_es5 | uglifyjs -c > dist/bundle-browserify-es5-only.js",
+    "webpack": "mkdirp dist && npm run build-node && webpack -p lib_node dist/bundle-webpack.js",
+    "webpack-es5-only": "mkdirp dist && webpack -p lib_es5 dist/bundle-webpack-es5-only.js",
+    "all": "npm run rollup && npm run browserify && npm run browserify-es5-only && npm run webpack && npm run webpack-es5-only"
   },
   "keywords": [],
+  "repository": "https://github.com/nolanlawson/rollup-comparison.git",
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -19,6 +21,7 @@
     "browserify": "^11.2.0",
     "mkdirp": "^0.5.1",
     "rollup": "^0.19.0",
+    "uglify-js": "^2.5.0",
     "webpack": "^1.12.2"
   }
 }
