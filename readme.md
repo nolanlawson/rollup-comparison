@@ -1,6 +1,9 @@
 compare rollup to browserify/webpack
 ----
 
+basic comparison of rollup to browserify/webpack, for the case of a module
+that imports 20 small functions from 20 other modules.
+
 usage:
 
 ```
