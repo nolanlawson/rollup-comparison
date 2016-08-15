@@ -9,7 +9,10 @@
     "browserify": "mkdirp dist && npm run build-node && browserify lib_node > dist/bundle-browserify.js",
     "browserify-es5-only": "mkdirp dist && browserify lib_es5 > dist/bundle-browserify-es5-only.js",
     "webpack": "mkdirp dist && npm run build-node && webpack lib_node dist/bundle-webpack.js",
-    "webpack-es5-only": "mkdirp dist && webpack lib_es5 dist/bundle-webpack-es5-only.js"
+    "webpack-es5-only": "mkdirp dist && webpack lib_es5 dist/bundle-webpack-es5-only.js",
+    "uglify":"for i in `ls dist/*.js|grep -v closure|grep -v uglify`;do uglifyjs $i -mc -o $i.uglify.js ; done && ls -l dist/| awk '{print $5,$9}'|sort -n",
+    "rank":"ls -l dist/| awk '{print $5,$9}'|sort -n",
+    "closure":"for i in `ls dist/*.js|grep -v closure|grep -v uglify`;do java -jar ./compiler.jar --compilation_level SIMPLE --js $i --js_output_file $i.closure.js; done && ls -l dist/| awk '{print $5,$9}'|sort -n"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +22,7 @@
     "browserify": "^11.2.0",
     "mkdirp": "^0.5.1",
     "rollup": "^0.19.0",
-    "webpack": "^1.12.2"
+    "webpack": "^1.12.2",
+    "uglify-js": "^2.5.0"
   }
 }
